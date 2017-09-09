@@ -1,0 +1,41 @@
+{
+  "title": "Golos.io Search Engine",
+  "name": "askgolos",
+  "version": "1.0.0-beta",
+  "description": "Golos.io Search Engine",
+  "keywords": [
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "theme",
+    "template"
+  ],
+  "homepage": "https://startbootstrap.com/template-overviews/freelancer",
+  "bugs": {
+    "url": "https://github.com/BlackrockDigital/startbootstrap-freelancer/issues",
+    "email": "ozhehkovski.e@gmail.com"
+  },
+  "license": "MIT",
+  "author": "RocketData",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ozhehkovski/askgolos.git"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "font-awesome": "4.7.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.11.1"
+  },
+  "devDependencies": {
+    "browser-sync": "2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "3.7.0",
+    "gulp-filter": "^5.0.1",
+    "gulp-header": "1.8.9",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "3.0.0"
+  }
+}

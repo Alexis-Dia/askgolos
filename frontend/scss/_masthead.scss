@@ -1,0 +1,52 @@
+// Styling for the masthead
+header.masthead {
+  padding-top: 100px;
+  padding-bottom: 50px;
+
+  text-align: center;
+
+  color: white;
+  background: $theme-success;
+  img {
+    display: block;
+
+    margin: 0 auto 20px;
+  }
+  .intro-text {
+    form{
+      max-width: 450px;
+      margin: 0 auto 20px;
+    }
+    .name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 2em;
+      font-weight: 300;
+
+      display: block;
+
+      text-transform: uppercase;
+    }
+  }
+}
+@media(min-width:768px) {
+  header.masthead {
+    padding-top: 150px;
+    padding-bottom: 50px;
+    .intro-text {
+      .name {
+        font-size: 4.75em;
+      }
+      .skills {
+        font-size: 1.75em;
+      }
+    }
+  }
+}
+.result{
+  p{
+    font-size: 1rem;
+  }
+  .snippet{
+    color: #969696;
+  }
+}
