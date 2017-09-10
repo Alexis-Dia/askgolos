@@ -67,7 +67,7 @@
                                       <!--clear-selected="true"-->
                                       <!--text-no-results="Ничего не найдено"-->
                                       <!--text-searching="Ищем..">-->
-                    <input type="text" ng-model="search_text" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
+                    <input type="text" ng-model-options="{debounce: 300}" ng-model="search_text" ng-init="search(search_text)" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
                 </div>
             </form>
             <p ng-cloak ng-show="results.response">Найдено <span id="r">{{ results.response.numFound }}</span> результатов</p>
@@ -81,24 +81,27 @@
         <div class="row" infinite-scroll="Paging()" infinite-scroll-distance="10">
             <!--<div class="col-md-12" ng-show="!results.response" ng-cloak>Введите чтото</div>-->
             <div class="col-md-12 filter text-center">
-                <a href="#" ng-click=""><span class="badge badge-pill badge-light">Посты</span></a>
-                <a href="#" ng-click=""><span class="badge badge-pill badge-light">Авторы</span></a>
-                <a href="#" ng-click=""><span class="badge badge-pill badge-success">Комментарии</span></a>
-                <a href="#" ng-click=""><span class="badge badge-pill badge-light">Голосисты</span></a>
-                <a href="#" ng-click=""><span class="badge badge-pill badge-light">Закомменченые</span></a>
-                <a href="#" ng-click=""><span class="badge badge-pill badge-light">Новые</span></a>
-                <a href="#" ng-click=""><span class="badge badge-pill badge-light">Убрать архивные</span></a>
+                <a href="javascript:;" ng-click="set_type('post')"><span ng-class="{'badge-success': (t=='post' || t=='def'), 'badge-light': (t!='post' || t!='def')}" class="badge badge-pill">Посты</span></a>
+                <a href="javascript:;" ng-click="set_type('account')"><span ng-class="{'badge-success': t=='account', 'badge-light': t!='account'}" class="badge badge-pill">Авторы</span></a>
+                <a href="javascript:;" ng-click="set_type('comments')"><span ng-class="{'badge-success': t=='comments', 'badge-light': t!='comments'}" class="badge badge-pill">Комментарии</span></a>
+                <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Голосисты</span></a>
+                <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Закомменченые</span></a>
+                <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Новые</span></a>
+                <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Убрать архивные</span></a>
             </div>
-            <div class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
-                <h4><a href="https://golos.io{{doc.url}}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{doc.url}}</a></h4>
-                <p class="snippet">The Millionth Gridcoin <span class="badge badge-primary">Block</span> is inbound and
-                    to celebrate an idea was fielded to produce a
-                    commemorative coin. Since @Dutch has been busy lately he asked if I could finish the 3D model of the
-                    coin as the design stood last week. Before going ahead and producing a mock up on the 3D printer to
-                    demons... </p>
-                <p><i class="fa fa-thumbs-up" aria-hidden="true"></i> 2,158 Votes | <i class="fa fa-comments"
-                                                                                       aria-hidden="true"></i> 68
-                    Comments | 2017-08-15 by <a href="">{{ doc.author }}</a> in <a href="">gridcoin</a> </p>
+
+            <div ng-if="t=='post'||'def'" class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
+                <h4><a href="https://golos.io{{doc.url}}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{doc.title}}</a></h4>
+                <p ng-bind="doc.body"></p>
+                <p><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{doc.net_votes}} Votes | {{doc.created }} by <a href="#" ng-click="search_text=doc.author;search(doc.author);t='account';">{{ doc.author }}</a></p>
+            </div>
+            <div ng-if="t=='account'" class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
+                <h4><a href="https://golos.io/{{ doc._id }}"><i class="fa fa-user" aria-hidden="true"></i> {{doc._id}}</a></h4>
+                <!--<p class="snippet">a</p>-->
+                <!--<p><a href=""><i class="fa fa-users" aria-hidden="true"></i> 1,443 Followers</a> | <a href=""><i class="fa fa-rss"-->
+                                                                                       <!--aria-hidden="true"></i> 68-->
+                    <!--Following</a></p>-->
+                <!--r-->
             </div>
             <!--<div class="col-md-12 result border border-warning">-->
                 <!--<h4><a href=""><i class="fa fa-user" aria-hidden="true"></i> USERNAME</a></h4>-->

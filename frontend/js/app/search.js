@@ -1,11 +1,32 @@
-appModule.controller('SearchController', ['$http', '$scope', '$rootScope', function($http, $scope, $rootScope){
+appModule.controller('SearchController', ['$resource', '$scope', '$rootScope', function($resource, $scope, $rootScope){
+    $scope.t = 'def';
+    // console.log($scope.t);
     $scope.search = function(search){
-        console.log(encodeURIComponent(search));
-        $http.get("http://askgolos.ru/search?q=" + encodeURIComponent(search), function(data){
-            $scope.results = data;
-        })
+        // console.log($scope.types[$scope.t].replace('^', search));
+        // search = search || '';
+        if ($scope.t === 'def'){
+            $scope.t = 'post'
+        }
+        search = $scope.types[$scope.t].replace('^', search);
+        $scope.results = $resource("http://askgolos.ru/search?indent=on&wt=json&q=" + encodeURIComponent(search)).get();
+        // console.log($scope.t);
+        // $http.get("http://195.2.252.217:9999/solr/askgolos/select?wt=json&q=" + encodeURIComponent(search), function(e, data){
+        //     $scope.results = data;
+        // })
     };
+    $scope.set_type = function(t){
+
+        $scope.t = t;
+        // console.log($scope.t);
+
+        // $scope.search_text
+    };
+
     $scope.types = {
-        post: " AND depth:0"
+        def: "depth:0",
+        post: "^ AND depth:0",
+        account: "^ AND ns:steemdb.account",
+        comments: "^ AND depth>0"
+        // byvote: ""
     }
 }]);
