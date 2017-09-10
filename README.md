@@ -1,6 +1,9 @@
 # askgolos
 Поиск по записям Golos.io
 
+# Установка
+# solr mongodb mongo-connector sync with api golos.io
+
 # Синтаксис запросов
 ## Поиск по фразам
 
