@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - './mongo/configdb:/data/configdb'
+      - './mongo/db:/data/db'
+    ports:
+      - '27777:27017'
+    command: mongod --replSet my-mongo-set
+  solr:
+    image: solr
+    ports:
+      - '8983:8983'

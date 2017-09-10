@@ -20,7 +20,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" ng-app="askgolos" ng-controller="SearchController">
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -57,10 +57,10 @@
             <form>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
+                    <input type="text" ng-model="search_text" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
                 </div>
             </form>
-            <p>Найдено <span id="r">1,253,451</span> результатов</p>
+            <p>Найдено <span id="r">{{ results.response.numFound }}</span> результатов</p>
         </div>
     </div>
 </header>
@@ -69,16 +69,16 @@
 <section id="result">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 filter">
-                <a href=""><span class="badge badge-pill badge-light">Посты</span></a>
-                <a href=""><span class="badge badge-pill badge-light">Авторы</span></a>
-                <a href=""><span class="badge badge-pill badge-success">С комментами</span></a>
-                <a href=""><span class="badge badge-pill badge-light">Голосисты</span></a>
-                <a href=""><span class="badge badge-pill badge-light">Закомменченые</span></a>
-                <a href=""><span class="badge badge-pill badge-light">Новые</span></a>
-            </div>
-            <div class="col-md-12 result border border-primary">
-                <h4><a href=""><i class="fa fa-file-text-o" aria-hidden="true"></i> Gridcoin Millionth Block Commemorative Coin</a></h4>
+            <!--<div class="col-md-12 filter">-->
+                <!--<a href=""><span class="badge badge-pill badge-light">Посты</span></a>-->
+                <!--<a href=""><span class="badge badge-pill badge-light">Авторы</span></a>-->
+                <!--<a href=""><span class="badge badge-pill badge-success">С комментами</span></a>-->
+                <!--<a href=""><span class="badge badge-pill badge-light">Голосисты</span></a>-->
+                <!--<a href=""><span class="badge badge-pill badge-light">Закомменченые</span></a>-->
+                <!--<a href=""><span class="badge badge-pill badge-light">Новые</span></a>-->
+            <!--</div>-->
+            <div class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs">
+                <h4><a href="https://golos.io{{doc.url}}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{doc.url}}</a></h4>
                 <p class="snippet">The Millionth Gridcoin <span class="badge badge-primary">Block</span> is inbound and
                     to celebrate an idea was fielded to produce a
                     commemorative coin. Since @Dutch has been busy lately he asked if I could finish the 3D model of the
@@ -86,20 +86,20 @@
                     demons... </p>
                 <p><i class="fa fa-thumbs-up" aria-hidden="true"></i> 2,158 Votes | <i class="fa fa-comments"
                                                                                        aria-hidden="true"></i> 68
-                    Comments | 2017-08-15 by <a href="">me-shell</a> in <a href="">gridcoin</a> </p>
+                    Comments | 2017-08-15 by <a href="">{{ doc.author }}</a> in <a href="">gridcoin</a> </p>
             </div>
-            <div class="col-md-12 result border border-warning">
-                <h4><a href=""><i class="fa fa-user" aria-hidden="true"></i> USERNAME</a></h4>
-                <p class="snippet">Gridcoin #BOINC #Bitshares #BeyondBitcoin #Podcast</p>
-                <p><a href=""><i class="fa fa-users" aria-hidden="true"></i> 1,443 Followers</a> | <a href=""><i class="fa fa-rss"
-                                                                                       aria-hidden="true"></i> 68
-                    Following</a></p>
-                <ul>
-                    <li><a href="https://golos.io/ru--puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>
-                    <li><a href="https://golos.io/ru--puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>
-                    <li><a href="https://golos.io/ru--puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>
-                </ul>
-            </div>
+            <!--<div class="col-md-12 result border border-warning">-->
+                <!--<h4><a href=""><i class="fa fa-user" aria-hidden="true"></i> USERNAME</a></h4>-->
+                <!--<p class="snippet">Gridcoin #BOINC #Bitshares #BeyondBitcoin #Podcast</p>-->
+                <!--<p><a href=""><i class="fa fa-users" aria-hidden="true"></i> 1,443 Followers</a> | <a href=""><i class="fa fa-rss"-->
+                                                                                       <!--aria-hidden="true"></i> 68-->
+                    <!--Following</a></p>-->
+                <!--<ul>-->
+                    <!--<li><a href="https://golos.io/ru&#45;&#45;puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>-->
+                    <!--<li><a href="https://golos.io/ru&#45;&#45;puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>-->
+                    <!--<li><a href="https://golos.io/ru&#45;&#45;puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>-->
+                <!--</ul>-->
+            <!--</div>-->
 
         </div>
     </div>
@@ -242,6 +242,10 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/popper/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/search.js"></script>
 </body>
 
 </html>
