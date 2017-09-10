@@ -1,0 +1,25 @@
+{
+  "name": "askgolos",
+  "description": "Golos.io Search Engine",
+  "main": "",
+  "authors": [
+    "RocketData"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "theme",
+    "template"
+  ],
+  "homepage": "https://github.com/ozhehkovski/askgolos",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
