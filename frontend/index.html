@@ -54,20 +54,20 @@
         <div class="intro-text">
             <form>
                 <div class="form-group">
-                    <angucomplete-alt id="members"
-                                      placeholder="Спроси что-нибудь у ГОЛОСа"
-                                      pause="100"
-                                      minlength="1"
-                                      selected-object="results.response"
-                                      remote-url="http://askgolos.ru/search?q="
-                                      remote-url-data-field="docs"
-                                      title-field="title"
-                                      input-class="form-control"
-                                      match-class="highlight"
-                                      clear-selected="true"
-                                      text-no-results="Ничего не найдено"
-                                      text-searching="Ищем..">
-                    <!--<input type="text" ng-model="search_text" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">-->
+                    <!--<angucomplete-alt id="members"-->
+                                      <!--placeholder="Спроси что-нибудь у ГОЛОСа"-->
+                                      <!--pause="100"-->
+                                      <!--minlength="1"-->
+                                      <!--selected-object="results.response"-->
+                                      <!--remote-url="http://askgolos.ru/search?q="-->
+                                      <!--remote-url-data-field="docs"-->
+                                      <!--title-field="title"-->
+                                      <!--input-class="form-control"-->
+                                      <!--match-class="highlight"-->
+                                      <!--clear-selected="true"-->
+                                      <!--text-no-results="Ничего не найдено"-->
+                                      <!--text-searching="Ищем..">-->
+                    <input type="text" ng-model="search_text" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
                 </div>
             </form>
             <p ng-cloak ng-show="results.response">Найдено <span id="r">{{ results.response.numFound }}</span> результатов</p>
