@@ -1071,9 +1071,17 @@
 <field name="ns" type="string" indexed="true" stored="true"/>
 
 <!-- Custom Fields, Search Against -->  
-<field name="title" type="string" indexed="true" stored="true"/>  
-<field name="body" type="text_general" indexed="true" stored="false"/>  
+<field name="_id" type="string" indexed="true" stored="true"/>
+<field name="title" type="text_ru" indexed="true" stored="true"/>
+<field name="body" type="text_ru" indexed="true" stored="true"/>
 <field name="author" type="string" indexed="true" stored="true"/>  
-<field name="url" type="string" indexed="false" stored="true"/>  
+<field name="depth" type="int" indexed="true" stored="true"/>
+<field name="created" type="pdate" indexed="true" stored="true"/>
+<field name="children" type="int" indexed="true" stored="true"/>
+<field name="url" type="string" indexed="false" stored="true"/>
+<field name="mode" type="string" indexed="true" stored="true"/>
+<field name="json_metadata.tags" type="string" indexed="true" stored="true" multiValued="true" />
+<field name="tags" type="string" indexed="true" stored="true" multiValued="true" />
+<field name="net_votes" type="int" indexed="true" stored="true"/>
 
 </schema>
