@@ -68,3 +68,12 @@ this also works with votes, less than or equal to 10 votes:
 Пример запроса:
 * tags:asksteem AND author:thekyle
 * created:2017-06-02 AND net_votes:>=100 AND children:<10
+
+
+
+solr: "sudo chown -R 8983:8983 solr/askgolos"
+
+Attaching to askgolos_mongo-connector_1
+mongo-connector_1  | /bin/sh: 1: mongo-connector -m mongo:27017 -n steemdb.comment -t http://solr:8983/solr/askgolos -d solr_doc_manager --auto-commit-interval=0 --oplog-ts=/data/oplog.ts -a askgolos -p askgolos: not found
+Attaching to askgolos_mongo-connector_1
+askgolos_mongo-connector_1 exited with code 127
