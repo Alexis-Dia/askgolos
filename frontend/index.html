@@ -54,19 +54,6 @@
         <div class="intro-text">
             <form>
                 <div class="form-group">
-                    <!--<angucomplete-alt id="members"-->
-                                      <!--placeholder="Спроси что-нибудь у ГОЛОСа"-->
-                                      <!--pause="100"-->
-                                      <!--minlength="1"-->
-                                      <!--selected-object="results.response"-->
-                                      <!--remote-url="http://askgolos.ru/search?q="-->
-                                      <!--remote-url-data-field="docs"-->
-                                      <!--title-field="title"-->
-                                      <!--input-class="form-control"-->
-                                      <!--match-class="highlight"-->
-                                      <!--clear-selected="true"-->
-                                      <!--text-no-results="Ничего не найдено"-->
-                                      <!--text-searching="Ищем..">-->
                     <input type="text" ng-model-options="{debounce: 300}" ng-model="search_text" ng-init="search(search_text)" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
                 </div>
             </form>
@@ -81,7 +68,7 @@
         <div class="row" infinite-scroll="Paging()" infinite-scroll-distance="10">
             <!--<div class="col-md-12" ng-show="!results.response" ng-cloak>Введите чтото</div>-->
             <div class="col-md-12 filter text-center">
-                <a href="javascript:;" ng-click="set_type('post')"><span ng-class="{'badge-success': (t=='post' || t=='def'), 'badge-light': (t!='post' || t!='def')}" class="badge badge-pill">Посты</span></a>
+                <a href="javascript:;" ng-click="set_type('post')"><span ng-class="{'badge-success': ['post', 'def'].indexOf(t) != -1, 'badge-light': ['post', 'def'].indexOf(t) == -1}" class="badge badge-pill">Посты</span></a>
                 <a href="javascript:;" ng-click="set_type('account')"><span ng-class="{'badge-success': t=='account', 'badge-light': t!='account'}" class="badge badge-pill">Авторы</span></a>
                 <a href="javascript:;" ng-click="set_type('comments')"><span ng-class="{'badge-success': t=='comments', 'badge-light': t!='comments'}" class="badge badge-pill">Комментарии</span></a>
                 <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Голосисты</span></a>
@@ -90,9 +77,9 @@
                 <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Убрать архивные</span></a>
             </div>
 
-            <div ng-if="t=='post'||'def'" class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
+            <div ng-if="t!='account'" class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
                 <h4><a href="https://golos.io{{doc.url}}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{doc.title}}</a></h4>
-                <p ng-bind="doc.body"></p>
+                <p class="snippet" ng-bind="doc.body" ></p>
                 <p><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{doc.net_votes}} Votes | {{doc.created }} by <a href="#" ng-click="search_text=doc.author;search(doc.author);t='account';">{{ doc.author }}</a></p>
             </div>
             <div ng-if="t=='account'" class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
