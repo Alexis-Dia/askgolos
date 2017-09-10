@@ -53,12 +53,24 @@
         <img class="img-fluid" src="img/golos-share.png" alt="">
         <div class="intro-text">
             <form>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-                    <input type="text" ng-model="search_text" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
+                <div class="form-group">
+                    <angucomplete-alt id="members"
+                                      placeholder="Спроси что-нибудь у ГОЛОСа"
+                                      pause="100"
+                                      minlength="1"
+                                      selected-object="results.response"
+                                      remote-url="http://askgolos.ru/search?q=="
+                                      remote-url-data-field="docs"
+                                      title-field="title"
+                                      input-class="form-control"
+                                      match-class="highlight"
+                                      clear-selected="true"
+                                      text-no-results="Ничего не найдено"
+                                      text-searching="Ищем..">
+                    <!--<input type="text" ng-model="search_text" ng-change="search(search_text)" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">-->
                 </div>
             </form>
-            <p>Найдено <span id="r">{{ results.response.numFound }}</span> результатов</p>
+            <p ng-cloak ng-show="results.response">Найдено <span id="r">{{ results.response.numFound }}</span> результатов</p>
         </div>
     </div>
 </header>
@@ -67,15 +79,16 @@
 <section id="result">
     <div class="container">
         <div class="row">
+            <!--<div class="col-md-12" ng-show="!results.response" ng-cloak>Введите чтото</div>-->
             <!--<div class="col-md-12 filter">-->
                 <!--<a href=""><span class="badge badge-pill badge-light">Посты</span></a>-->
                 <!--<a href=""><span class="badge badge-pill badge-light">Авторы</span></a>-->
-                <!--<a href=""><span class="badge badge-pill badge-success">С комментами</span></a>-->
+                <!--<a href=""><span class="badge badge-pill badge-success">Комментарии</span></a>-->
                 <!--<a href=""><span class="badge badge-pill badge-light">Голосисты</span></a>-->
                 <!--<a href=""><span class="badge badge-pill badge-light">Закомменченые</span></a>-->
                 <!--<a href=""><span class="badge badge-pill badge-light">Новые</span></a>-->
             <!--</div>-->
-            <div class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs">
+            <div class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
                 <h4><a href="https://golos.io{{doc.url}}"><i class="fa fa-file-text-o" aria-hidden="true"></i>{{doc.url}}</a></h4>
                 <p class="snippet">The Millionth Gridcoin <span class="badge badge-primary">Block</span> is inbound and
                     to celebrate an idea was fielded to produce a
@@ -206,7 +219,7 @@
                                 <p>через крышку указываем усиление ^m</p>
                                 <p>Примеры запросов</p>
                                 <ul>
-                                    <li>* How to mine^2 steem^3</li>
+                                    <li>How to mine^2 steem^3</li>
                                 </ul>
                             </div>
                             <hr>
@@ -215,7 +228,7 @@
                                 <p>+ перед словом - обязательное вхождение в пост, - исключение</p>
                                 <p>Пример запроса:</p>
                                 <ul>
-                                    <li>* cryptocurrency +mining -bitcoin</li>
+                                    <li>cryptocurrency +mining -bitcoin</li>
                                 </ul>
                             </div>
                             <hr>
@@ -224,8 +237,8 @@
                                 <p>Доступны функции AND, OR, and NOT</p>
                                 <p>Пример запроса:</p>
                                 <ul>
-                                    <li>* tags:asksteem AND author:thekyle</li>
-                                    <li>* created:2017-06-02 AND net_votes:>=100 AND children:<10</li>
+                                    <li>tags:asksteem AND author:thekyle</li>
+                                    <li>created:2017-06-02 AND net_votes:>=100 AND children:<10</li>
                                 </ul>
                             </div>
                         </div>
@@ -242,6 +255,7 @@
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
 <script src="js/app/app.js"></script>
 <script src="js/app/search.js"></script>
 </body>

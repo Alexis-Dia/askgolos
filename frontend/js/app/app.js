@@ -1,1 +1,1 @@
-var appModule = angular.module("askgolos", ['ngResource']);
+var appModule = angular.module("askgolos", ['ngResource', 'angucomplete-alt']);
