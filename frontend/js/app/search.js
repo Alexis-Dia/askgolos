@@ -1,5 +1,11 @@
-appModule.controller('SearchController', ['$resource', '$scope', '$rootScope', function($resource, $scope){
+appModule.controller('SearchController', ['$http', '$scope', '$rootScope', function($http, $scope, $rootScope){
     $scope.search = function(search){
-        $scope.results = $resource("http://askgolos.ru/search?q=" + search).get()
+        console.log(encodeURIComponent(search));
+        $http.get("http://askgolos.ru/search?q=" + encodeURIComponent(search), function(data){
+            $scope.results = data;
+        })
     };
+    $scope.types = {
+        post: " AND depth:0"
+    }
 }]);
