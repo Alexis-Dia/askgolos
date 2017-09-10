@@ -9,7 +9,6 @@ header.masthead {
   background: $theme-success;
   img {
     display: block;
-
     margin: 0 auto 20px;
   }
   .intro-text {
@@ -31,7 +30,7 @@ header.masthead {
 @media(min-width:768px) {
   header.masthead {
     padding-top: 150px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     .intro-text {
       .name {
         font-size: 4.75em;
@@ -43,10 +42,23 @@ header.masthead {
   }
 }
 .result{
+  margin-bottom: 10px;
+  h4{
+    padding: 10px 0;
+  }
   p{
     font-size: 1rem;
   }
   .snippet{
     color: #969696;
   }
+  ul{
+    list-style-type: none;
+  }
+}
+.filter{
+  margin: 10px 0;
+}
+#result{
+  padding-top: 20px!important;
 }

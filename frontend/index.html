@@ -25,7 +25,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><span class="ask">Ask</span>Golos</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><span class="ask">Ask</span>ГОЛОС</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -57,9 +57,10 @@
             <form>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" id="query" placeholder="Пиши что-нибудь сюда">
+                    <input type="text" class="form-control" id="query" placeholder="Спроси что-нибудь у ГОЛОСа">
                 </div>
             </form>
+            <p>Найдено <span id="r">1,253,451</span> результатов</p>
         </div>
     </div>
 </header>
@@ -67,13 +68,17 @@
 <!-- Result Grid Section -->
 <section id="result">
     <div class="container">
-        <h3>Результаты поиска:</h3>
         <div class="row">
-            <div class="col-md-12">
-                <p><span id="r">1,253,451</span> results for <span id="q">tags:dtube and block</span></p>
+            <div class="col-md-12 filter">
+                <a href=""><span class="badge badge-pill badge-light">Посты</span></a>
+                <a href=""><span class="badge badge-pill badge-light">Авторы</span></a>
+                <a href=""><span class="badge badge-pill badge-success">С комментами</span></a>
+                <a href=""><span class="badge badge-pill badge-light">Голосисты</span></a>
+                <a href=""><span class="badge badge-pill badge-light">Закомменченые</span></a>
+                <a href=""><span class="badge badge-pill badge-light">Новые</span></a>
             </div>
             <div class="col-md-12 result border border-primary">
-                <h4><a href="">Gridcoin Millionth Block Commemorative Coin</a></h4>
+                <h4><a href=""><i class="fa fa-file-text-o" aria-hidden="true"></i> Gridcoin Millionth Block Commemorative Coin</a></h4>
                 <p class="snippet">The Millionth Gridcoin <span class="badge badge-primary">Block</span> is inbound and
                     to celebrate an idea was fielded to produce a
                     commemorative coin. Since @Dutch has been busy lately he asked if I could finish the 3D model of the
@@ -81,8 +86,21 @@
                     demons... </p>
                 <p><i class="fa fa-thumbs-up" aria-hidden="true"></i> 2,158 Votes | <i class="fa fa-comments"
                                                                                        aria-hidden="true"></i> 68
-                    Comments | 1 month, 3 weeks ago by me-shell in gridcoin </p>
+                    Comments | 2017-08-15 by <a href="">me-shell</a> in <a href="">gridcoin</a> </p>
             </div>
+            <div class="col-md-12 result border border-warning">
+                <h4><a href=""><i class="fa fa-user" aria-hidden="true"></i> USERNAME</a></h4>
+                <p class="snippet">Gridcoin #BOINC #Bitshares #BeyondBitcoin #Podcast</p>
+                <p><a href=""><i class="fa fa-users" aria-hidden="true"></i> 1,443 Followers</a> | <a href=""><i class="fa fa-rss"
+                                                                                       aria-hidden="true"></i> 68
+                    Following</a></p>
+                <ul>
+                    <li><a href="https://golos.io/ru--puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>
+                    <li><a href="https://golos.io/ru--puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>
+                    <li><a href="https://golos.io/ru--puteshestviya/@ssigerefen/khokhotat-do-upadu">Хохотать до упаду</a> | 2017-08-15</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </section>

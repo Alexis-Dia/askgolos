@@ -172,17 +172,28 @@ header.masthead {
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 150px;
-    padding-bottom: 50px; }
+    padding-bottom: 20px; }
     header.masthead .intro-text .name {
       font-size: 4.75em; }
     header.masthead .intro-text .skills {
       font-size: 1.75em; } }
 
-.result p {
-  font-size: 1rem; }
+.result {
+  margin-bottom: 10px; }
+  .result h4 {
+    padding: 10px 0; }
+  .result p {
+    font-size: 1rem; }
+  .result .snippet {
+    color: #969696; }
+  .result ul {
+    list-style-type: none; }
 
-.result .snippet {
-  color: #969696; }
+.filter {
+  margin: 10px 0; }
+
+#result {
+  padding-top: 20px !important; }
 
 #syntax .syntax-item {
   right: 0;
