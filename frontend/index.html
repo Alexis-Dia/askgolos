@@ -74,7 +74,7 @@
                 <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Голосисты</span></a>
                 <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Закомменченые</span></a>
                 <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Новые</span></a>
-                <a href="javascript:;" ng-click=""><span class="badge badge-pill badge-light">Убрать архивные</span></a>
+                <a href="javascript:;" ng-click="set_type('archive')"><span ng-class="{'badge-success': t=='archive', 'badge-light': t!='archive'}" class="badge badge-pill badge-light">Убрать архивные</span></a>
             </div>
 
             <div ng-if="t!='account'" class="col-md-12 result border border-primary" ng-repeat="doc in results.response.docs" ng-cloak>
