@@ -5,10 +5,24 @@ services:
     volumes:
       - './mongo/configdb:/data/configdb'
       - './mongo/db:/data/db'
+    expose:
+      - '27017'
     ports:
       - '27777:27017'
-    command: mongod --replSet my-mongo-set
+    command: mongod --replSet golos
   solr:
     image: solr
+    expose:
+      - '8983'
     ports:
-      - '8983:8983'
+      - '9999:8983'
+    volumes:
+      - './solr/askgolos:/opt/solr/server/solr/askgolos'
+  mongo-connector:
+    build: ./mongo-connector
+  sync:
+    build: ./sync
+    environment:
+      steemnode: ws.golos.io
+    links:
+      - mongo

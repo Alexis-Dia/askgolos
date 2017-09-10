@@ -71,3 +71,8 @@ this also works with votes, less than or equal to 10 votes:
 Пример запроса:
 * tags:asksteem AND author:thekyle
 * created:2017-06-02 AND net_votes:>=100 AND children:<10
+
+
+mongo-connector -m 127.0.0.1:27777 -n steemdb.comment,steemdb.account, -t http://195.2.252.217:8983/solr/askgolos -auto-commit-interval=0 -d solr_doc_manager -a con -p con
+
+solr: "sudo chown -R 8983:8983 solr/askgolos"
