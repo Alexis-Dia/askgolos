@@ -59,7 +59,7 @@
                                       pause="100"
                                       minlength="1"
                                       selected-object="results.response"
-                                      remote-url="http://askgolos.ru/search?q=="
+                                      remote-url="http://askgolos.ru/search?q="
                                       remote-url-data-field="docs"
                                       title-field="title"
                                       input-class="form-control"
@@ -78,7 +78,7 @@
 <!-- Result Grid Section -->
 <section id="result">
     <div class="container">
-        <div class="row">
+        <div class="row" infinite-scroll="Paging()" infinite-scroll-distance="10">
             <!--<div class="col-md-12" ng-show="!results.response" ng-cloak>Введите чтото</div>-->
             <!--<div class="col-md-12 filter">-->
                 <!--<a href=""><span class="badge badge-pill badge-light">Посты</span></a>-->
@@ -256,6 +256,7 @@
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-resource/angular-resource.min.js"></script>
 <script src="bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
+<script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 <script src="js/app/app.js"></script>
 <script src="js/app/search.js"></script>
 </body>
