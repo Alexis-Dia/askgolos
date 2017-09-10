@@ -1076,7 +1076,7 @@
 <!-- Custom Fields, Search Against -->  
 <field name="_id" type="string" indexed="true" stored="true"/>
 <field name="title" type="text_ru" indexed="true" stored="true"/>
-<field name="body" type="text_ru" indexed="true" stripHTML="true" stored="true"/>
+<field name="body" type="text_ru" indexed="true" stored="true"/>
 <field name="author" type="string" indexed="true" stored="true"/>  
 <field name="depth" type="int" indexed="true" stored="true"/>
 <field name="created" type="pdate" indexed="true" stored="true"/>
