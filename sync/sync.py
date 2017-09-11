@@ -10,7 +10,7 @@ import sys
 import os
 
 rpc = SteemNodeRPC("wss://ws.golos.io", apis=["follow", "database"])
-mongo = MongoClient("mongo", 27017)
+mongo = MongoClient("localhost", 27017)
 db = mongo.steemdb
 
 init = db.status.find_one({'_id': 'height'})
